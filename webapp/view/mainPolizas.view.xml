@@ -1,0 +1,129 @@
+<mvc:View controllerName="polizas.controller.mainPolizas" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:t="sap.ui.table" xmlns:forms="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:goals="sap.uxap.sample.SharedBlocks.goals" height="100%" class="sapUiSizeCompact"
+	xmlns:tnt="sap.tnt">
+	<m:Shell id="shell">
+		<m:App id="app">
+			<m:pages>
+				<m:Page id="page" title="POLIZAS DE TRAYECTO">
+					<m:content>
+						<m:Panel>
+							<m:content>
+								<m:Panel>
+									<m:OverflowToolbar>
+										<m:Button id="displayNotFoundBtn" type="Transparent" press="onPress" text="Añadir Poliza" icon="sap-icon://add" class="sapUiTinyMarginEnd"/>
+										<m:ToolbarSpacer/>
+										<!--<m:SearchField placeholder="Buscar" value="{ui>/filterValue}" search="onHandleTxtFilter" width="20rem"/>-->
+										<m:PullToRefresh id="pullToRefresh" refresh="handleRefresh" busyIndicatorSize="Small" iconDensityAware="true"/>
+										<m:content></m:content>
+									</m:OverflowToolbar>
+									<m:OverflowToolbar>
+										<m:content>
+											<m:Input id="nombre" enabled="false" visible="false"/>
+										</m:content>
+									</m:OverflowToolbar>
+									<t:Table id="idPolizas" selectionMode="None" rows="{/mPolizas}" visibleRowCount="8" ariaLabelledBy="title">
+										<t:columns>
+											<t:Column id="colEliminarPolizatbl" width="5rem">
+												<m:Label text="Eliminar"/>
+												<t:template>
+													<m:Button id="idDelete" icon="sap-icon://delete" press="onDeletePoliza" type="Transparent" class="sapUiSmallMarginEnd"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="4rem" filterProperty="ID">
+												<m:Label text="ID"/>
+												<t:template>
+													<m:Link text="{ID}" press="onDetails" class="sapUiTinyMarginEnd"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="7rem" filterProperty="NAME">
+												<m:Label text="MODALIDAD"/>
+												<t:template>
+													<m:Text text="{NAME}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="7rem" filterProperty="DESC5">
+												<m:Label text="PRODUCTO"/>
+												<t:template>
+													<m:Text text="{DESC5}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="6rem" filterProperty="DESC3">
+												<m:Label text="SEGMENTO"/>
+												<t:template>
+													<m:Text text="{DESC3}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="8rem" filterProperty="DESC1">
+												<m:Label text="TIPO DE VIAJE"/>
+												<t:template>
+													<m:Text text="{DESC1}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="7rem" filterProperty="DESC7">
+												<m:Label text="ORIGEN"/>
+												<t:template>
+													<m:Text text="{DESC7}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="7rem" filterProperty="DESC9">
+												<m:Label text="DESTINO"/>
+												<t:template>
+													<m:Text text="{DESC9}"/>
+												</t:template>
+											</t:Column>
+											<t:Column id="idFleteInicialColumns" width="8rem" filterProperty="DESC14">
+												<m:Label text="FLETE INICIAL"/>
+												<t:template>
+													<!--<m:Text text="{DESC14}"/>-->
+													<u:Currency value="{= parseFloat(${DESC14})}" maxPrecision="0" currency="" useSymbol="false"/>
+												</t:template>
+											</t:Column>
+											<t:Column  id="idFleteFinalColumns" width="7rem" filterProperty="DESC15">
+												<m:Label text="FLETE FINAL"/>
+												<t:template>
+													<u:Currency value="{= parseFloat(${DESC15})}" maxPrecision="0" currency="" useSymbol="false"/>
+													<!--<m:Text text="{DESC15}"/>-->
+												</t:template>
+											</t:Column>
+											<t:Column width="8rem" filterProperty="DESC11">
+												<m:Label text="CLIENTE"/>
+												<t:template>
+													<m:Text text="{DESC11}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="8rem" filterProperty="DESC13">
+												<m:Label text="POSEEDOR"/>
+												<t:template>
+													<m:Text text="{DESC13}"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="8rem" filterProperty="DESC16">
+												<m:Label text="TIPO COBRO"/>
+												<t:template>
+													<m:Text text="{DESC16}"/>
+												</t:template>
+											</t:Column>
+											<t:Column id="idValorPolizaColumns" width="8rem" autoResizable="true" filterProperty="DESC18">
+												<m:Label text="VALOR POLIZA"/>
+												<t:template>
+													<u:Currency value="{= parseFloat(${DESC18})}" maxPrecision="0" currency="" useSymbol="false"/>
+												</t:template>
+											</t:Column>
+											<t:Column width="9rem" autoResizable="true" filterProperty="DESC17">
+												<m:Label text="PORCENTAJE"/>
+												<t:template>
+													<m:Text text="{DESC17}"/>
+												</t:template>
+											</t:Column>
+										</t:columns>
+									</t:Table>
+								</m:Panel>
+							</m:content>
+						</m:Panel>
+					</m:content>
+				</m:Page>
+			</m:pages>
+		</m:App>
+	</m:Shell>
+</mvc:View>

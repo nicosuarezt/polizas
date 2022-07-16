@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog noDataText="No Products Found" title="Seleccionar Ciudad" search="onFilter" confirm="handleCloseCiudades"
+		cancel="handleCloseCiudades" items="{/mDivisionPolitica}">
+		<ColumnListItem>
+			<cells>
+				<Text text="{DESC2}"/>
+			</cells>
+			<cells>
+				<Text text="{DESC4}"/>
+			</cells>
+			<cells>
+				<Text text="{DESC6}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Zona"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Municipio"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Departamento"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

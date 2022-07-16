@@ -1,0 +1,35 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog  noDataText="No Data" title="Segmentos" search="onFilter" 
+	confirm="handleCloseSegmentos"  cancel="handleCloseSegmentos"  items="{/mSegmentos}">
+		<ColumnListItem>
+			<cells>
+				<Text text="{ID}"/>
+			</cells>
+			
+			<cells>
+				<Text text="{NAME}"/>
+			</cells>
+			
+			<cells>
+				<Text text="{DESC}"/>
+			</cells>
+		
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Código"/>
+				</header>
+			</Column>
+		
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Segmento"/>
+				</header>
+			</Column>
+		
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

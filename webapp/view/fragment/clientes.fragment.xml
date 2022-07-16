@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog  noDataText="No Products Found" title="Clientes" search="onFilter" 
+	confirm="handleCloseClientes"  cancel="handleCloseClientes"  items="{/mClientes}">
+		<ColumnListItem>
+			<cells>
+				<Text text="{ID}"/>
+			</cells>
+			
+			<cells>
+				<Text text="{NAME}"/>
+			</cells>
+			
+		
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Número de identificación"/>
+				</header>
+			</Column>
+		
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Razón social"/>
+				</header>
+			</Column>
+	
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

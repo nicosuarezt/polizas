@@ -1,0 +1,38 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+			"source": "^/resources/(.*)$",
+			"target": "/resources/$1",
+			"authenticationType": "none",
+			"destination": "ui5"
+		},
+		{
+			"source": "^/test-resources/(.*)$",
+			"target": "/test-resources/$1",
+			"authenticationType": "none",
+			"destination": "ui5"
+		},
+		{
+			"source": "^/hanadb/(.*)$",
+			"target": "$1",
+			"authenticationType": "none",
+			"destination": "HANA_DB",
+			"csrfProtection": false
+		},
+    {
+			"source": "^/user(.*)",
+			"target": "$1",
+			"service": "sap-approuter-userapi",
+			"authenticationType": "xsuaa"
+		},
+		{
+			"source": "^/index1.html",
+			"target": "index1.html",
+			"localDir": "./",
+			"authenticationType": "xsuaa"
+		}
+   
+  ]
+}

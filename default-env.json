@@ -1,0 +1,104 @@
+{
+	"VCAP_SERVICES": {
+		"saas-registry": [
+			{
+				"label": "saas-registry",
+				"provider": null,
+				"plan": "application",
+				"name": "smart-cargo-registry",
+				"tags": ["SaaS"],
+				"instance_guid": "7418d609-b28b-4a9c-8452-13b317903620",
+				"instance_name": "smart-cargo-registry",
+				"binding_guid": "672d16ee-eeb8-40bc-96fe-c46a7512c909",
+				"binding_name": null,
+				"credentials": {
+					"tenantmode": "dedicated",
+					"sburl": "https://internal-xsuaa.authentication.us10.hana.ondemand.com",
+					"subaccountid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"credential-type": "binding-secret",
+					"clientid": "sb-smart-cargo-clone!b74295|lps-registry-broker!b4",
+					"xsappname": "dev-smart-cargo",
+					"appName": "smart-cargo",
+					"clientsecret": "672d16ee-eeb8-40bc-96fe-c46a7512c909$j05Hkd-J-96N3CKoJ4-utzyqKWABTcIbjPMKyno_zc0=",
+					"tenant_onboarding_url": "https://saas-manager.mesh.cf.us10.hana.ondemand.com",
+					"saas_registry_url": "https://saas-manager.mesh.cf.us10.hana.ondemand.com",
+					"appUrls": "{\"getDependencies\":\"https://8de277f7trial-dev-smart-cargo-srv.cfapps.us10.hana.ondemand.com/callback/v1.0/dependencies\",\"onSubscription\":\"https://8de277f7trial-dev-smart-cargo-srv.cfapps.us10.hana.ondemand.com/callback/v1.0/tenants/{tenantId}\",\"onSubscriptionAsync\":false,\"onUnSubscriptionAsync\":false,\"onUpdateSubscriptionParametersAsync\":false,\"callbackTimeoutMillis\":0,\"runGetDependenciesOnAsyncCallback\":false}",
+					"description": "My SaaS Business Application",
+					"display_name": "Smart Cargo",
+					"url": "https://8de277f7trial.authentication.us10.hana.ondemand.com",
+					"uaadomain": "authentication.us10.hana.ondemand.com",
+					"verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvVm+LdG7UeaXAc3GcGYlDdWuZuLgPusYZuGJqLwb5FZAMjqtVqx/hONIibqRz+pfrI7Bgu53XomJZ+JFiolOQLDCNN6uGpAqpUSJMyjQwfhMmZ/VrwYlO8iYCoPttcJJCmnhzgx9GlCECYkEQCONtXzCueDNXLaJ+NrDEQtrluUpqCVinF00zaDSZI4uByN5ec863mO1cTzxvD7nnsilPXUZ3/Bq0PCdw/Qi9uIkqDZyuNLwb3lQksWoZszwYKYTDM+smdym6gSHIei4hvi150r4RLva81oxCXbxsXYqCClAkVzxTEsZebn+RpuhKkApnSC/xVv29q6/PBUdUFU4VQIDAQAB-----END PUBLIC KEY-----",
+					"apiurl": "https://api.authentication.us10.hana.ondemand.com",
+					"identityzone": "8de277f7trial",
+					"identityzoneid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"tenantid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"zoneid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"category": "MQA Business Consultant S.A"
+				},
+				"syslog_drain_url": null,
+				"volume_mounts": []
+			}
+		],
+		"destination": [
+			{
+				"label": "destination",
+				"provider": null,
+				"plan": "lite",
+				"name": "smart-cargo-dest",
+				"tags": ["destination", "conn", "connsvc"],
+				"instance_guid": "26c4ef21-d85c-442a-8b48-0d7a988c52ea",
+				"instance_name": "smart-cargo-dest",
+				"binding_guid": "3b8154ea-2c4e-4c6b-9875-7cd014f44c73",
+				"binding_name": null,
+				"credentials": {
+					"tenantmode": "dedicated",
+					"clientid": "sb-clone26c4ef21d85c442a8b480d7a988c52ea!b74295|destination-xsappname!b62",
+					"credential-type": "binding-secret",
+					"xsappname": "clone26c4ef21d85c442a8b480d7a988c52ea!b74295|destination-xsappname!b62",
+					"clientsecret": "3b8154ea-2c4e-4c6b-9875-7cd014f44c73$FQDUS1NundDPrh_MM55c8N-6xNtmyWAH1nd6oE6aKUs=",
+					"uri": "https://destination-configuration.cfapps.us10.hana.ondemand.com",
+					"url": "https://8de277f7trial.authentication.us10.hana.ondemand.com",
+					"uaadomain": "authentication.us10.hana.ondemand.com",
+					"instanceid": "26c4ef21-d85c-442a-8b48-0d7a988c52ea",
+					"verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvVm+LdG7UeaXAc3GcGYlDdWuZuLgPusYZuGJqLwb5FZAMjqtVqx/hONIibqRz+pfrI7Bgu53XomJZ+JFiolOQLDCNN6uGpAqpUSJMyjQwfhMmZ/VrwYlO8iYCoPttcJJCmnhzgx9GlCECYkEQCONtXzCueDNXLaJ+NrDEQtrluUpqCVinF00zaDSZI4uByN5ec863mO1cTzxvD7nnsilPXUZ3/Bq0PCdw/Qi9uIkqDZyuNLwb3lQksWoZszwYKYTDM+smdym6gSHIei4hvi150r4RLva81oxCXbxsXYqCClAkVzxTEsZebn+RpuhKkApnSC/xVv29q6/PBUdUFU4VQIDAQAB-----END PUBLIC KEY-----",
+					"identityzone": "8de277f7trial",
+					"tenantid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f"
+				},
+				"syslog_drain_url": null,
+				"volume_mounts": []
+			}
+		],
+		"xsuaa": [
+			{
+				"label": "xsuaa",
+				"provider": null,
+				"plan": "application",
+				"name": "smart-cargo-uaa",
+				"tags": ["xsuaa"],
+				"instance_guid": "d6e61bb8-8092-462b-aae2-9be99b9ea09d",
+				"instance_name": "smart-cargo-uaa",
+				"binding_guid": "f2b18daa-9120-4541-9241-0f7b23738ecf",
+				"binding_name": null,
+				"credentials": {
+					"apiurl": "https://api.authentication.us10.hana.ondemand.com",
+					"clientid": "sb-smart-cargo!t74295",
+					"clientsecret": "PgLTLAg7jAOK8bhhZAzWgWCDU+U=",
+					"credential-type": "instance-secret",
+					"identityzone": "8de277f7trial",
+					"identityzoneid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"sburl": "https://internal-xsuaa.authentication.us10.hana.ondemand.com",
+					"subaccountid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"tenantid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f",
+					"tenantmode": "dedicated",
+					"uaadomain": "authentication.us10.hana.ondemand.com",
+					"url": "https://8de277f7trial.authentication.us10.hana.ondemand.com",
+					"verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvVm+LdG7UeaXAc3GcGYl\nDdWuZuLgPusYZuGJqLwb5FZAMjqtVqx/hONIibqRz+pfrI7Bgu53XomJZ+JFiolO\nQLDCNN6uGpAqpUSJMyjQwfhMmZ/VrwYlO8iYCoPttcJJCmnhzgx9GlCECYkEQCON\ntXzCueDNXLaJ+NrDEQtrluUpqCVinF00zaDSZI4uByN5ec863mO1cTzxvD7nnsil\nPXUZ3/Bq0PCdw/Qi9uIkqDZyuNLwb3lQksWoZszwYKYTDM+smdym6gSHIei4hvi1\n50r4RLva81oxCXbxsXYqCClAkVzxTEsZebn+RpuhKkApnSC/xVv29q6/PBUdUFU4\nVQIDAQAB\n-----END PUBLIC KEY-----",
+					"xsappname": "smart-cargo!t74295",
+					"zoneid": "4093bbfb-8cd9-43a8-80eb-9ad18c3b7a5f"
+				},
+				"syslog_drain_url": null,
+				"volume_mounts": []
+			}
+		]
+	}
+}

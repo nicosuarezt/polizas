@@ -1,0 +1,246 @@
+<mvc:View controllerName="polizas.controller.formPolizas" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" class="sapUiSizeCompact" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="Formulario" class="sapUiContentPadding" showHeader="false" enableScrolling="true">
+				<Panel width="auto" headerText="Formulario Polizas de Trayecto">
+					<content>
+						<OverflowToolbar>
+							<Button icon="sap-icon://nav-back" text="Regresar" press="onNavBack" type="Transparent"/>
+							<Text text=""/>
+							<ToolbarSpacer/>
+							<Button id="btnCancel" text="Cancelar edición" press="onCancel" visible="false" icon="sap-icon://sys-cancel-2" type="Reject"/>
+							<OverflowToolbar>
+								<Button icon="sap-icon://request" tooltip="Editar" id="idButtonEdit" visible="false" type="Transparent" press="onEdit"/>
+							</OverflowToolbar>
+						</OverflowToolbar>
+						<IconTabBar showOverflowSelectList="true">
+							<items>
+								<IconTabFilter visible="false"/>
+								<IconTabSeparator/>
+								<IconTabFilter iconColor="Default" design="Horizontal" icon="sap-icon://home-share" text="Información">
+									<content>
+										<f:SimpleForm validateFieldGroup="onValidateFieldGroup" columnsM="2" columnsL="2" emptySpanM="0" emptySpanL="0" labelSpanM="4"
+											labelSpanL="4" layout="ResponsiveGridLayout" editable="true" maxContainerCols="2" minWidth="1024">
+											<f:content>
+												<core:Title text="Datos generales"/>
+												<Input id="id_poliza" visible="false"/>
+												<Label text="Modalidad"/>
+												<ComboBox change="calcularRangoFlete" id="idModalidad" required="true" 
+												enabled="{
+													parts: [
+														{path: 'i18n>idModalidad'},
+														{path: '/oAppConfig/bEditMode'}
+													],
+													formatter: '.hasEnableRights'
+												}">
+													<items>
+														<core:Item key="01" text="URBANO"/>
+														<core:Item key="02" text="NACIONAL"/>
+														<!--<core:Item key="02" text="IMPORTACIÓN"/>-->
+														<!--<core:Item key="03" text="EXPORTACIÓN"/>-->
+													</items>
+													<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+												</ComboBox>
+												<Label text="Producto"/>
+												<Input id="idProducto" showValueHelp="true" change="calcularRangoFlete" 
+												enabled="{
+													parts: [
+														{path: 'i18n>idProducto'},
+														{path: '/oAppConfig/bEditMode'}
+													],
+													formatter: '.hasEnableRights'
+												}"
+												valueHelpOnly="true" valueHelpRequest="handleValueHelpProductos"/>
+												<Label text=""/>
+												<Input id="idCodProducto" visible="false" editable="false"/>
+												<Label text="Segmento"/>
+												<Input id="idSegmento" showValueHelp="true" change="calcularRangoFlete" 
+												enabled="{
+													parts: [
+														{path: 'i18n>idSegmento'},
+														{path: '/oAppConfig/bEditMode'}
+													],
+													formatter: '.hasEnableRights'
+												}"
+												valueHelpOnly="true" valueHelpRequest="handleValueHelpSegmentos"></Input>
+												<Label text=""/>
+												<Input id="idCodSegmento" visible="false" editable="false"/>
+												<Label text="Tipo Viaje"/>
+												<ComboBox change="onClean" id="idTipoViaje" 
+													enabled="{
+														parts: [
+															{path: 'i18n>idTipoViaje'},
+															{path: '/oAppConfig/bEditMode'}
+														],
+														formatter: '.hasEnableRights'
+													}">
+													<items>
+														<core:Item key="01" text="SECA"/>
+														<core:Item key="02" text="LIQUIDO"/>
+													</items>
+												</ComboBox>
+												<Label text="Origen"/>
+												<Input id="idOrigen" showValueHelp="true" valueHelpOnly="true" 
+												enabled="{
+														parts: [
+															{path: 'i18n>idOrigen'},
+															{path: '/oAppConfig/bEditMode'}
+														],
+														formatter: '.hasEnableRights'
+													}"
+												valueHelpRequest="handleValueHelpCiudad"/>
+												<Label text=""/>
+												<Input id="idCodOrigen" visible="false" editable="false"/>
+												<Label text="Destino"/>
+												<Input id="idDestino" 
+												enabled="{
+														parts: [
+															{path: 'i18n>idDestino'},
+															{path: '/oAppConfig/bEditMode'}
+														],
+														formatter: '.hasEnableRights'
+													}"
+												change="calcularRangoFlete" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelpCiudad"/>
+												<Label text=""/>
+												<Input id="idCodDestino" visible="false" editable="false"/>
+												<Label text="Flete Inicial"/>
+												<Input id="idFleteInicial" value="{path:'/fleteInicial', type:'sap.ui.model.type.Currency'}" change="calcularRangoFlete" required="true"
+													liveChange="onlyNumber" 
+													enabled="{
+														parts: [
+															{path: 'i18n>idFleteInicial'},
+															{path: '/oAppConfig/bEditMode'}
+														],
+														formatter: '.hasEnableRights'
+													}">
+													<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+												</Input>
+												<Label text="Flete Final"/>
+												<Input id="idFleteFinal" value="{path:'/fleteFinal', type:'sap.ui.model.type.Currency'}" change="calcularRangoFlete"
+													enabled="{
+														parts: [
+															{path: 'i18n>idFleteFinal'},
+															{path: '/oAppConfig/bEditMode'}
+														],
+														formatter: '.hasEnableRights'
+													}"
+													required="true" liveChange="onlyNumber">
+													<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+												</Input>
+												<core:Title text=""/>
+												<Label text="Cliente"/>
+												<Input id="idNomCliente" change="calcularRangoFlete" showValueHelp="true" valueHelpOnly="true" 
+													enabled="{
+															parts: [
+																{path: 'i18n>idNomCliente'},
+																{path: '/oAppConfig/bEditMode'}
+															],
+															formatter: '.hasEnableRights'
+														}"
+												valueHelpRequest="handleValueHelpClientes"/>
+												<Label text=""/>
+												<Input id="idCodCliente" visible="false" editable="false"/>
+												<Label text="Poseedor"/>
+												<Input id="idNomPoseedor" change="calcularRangoFlete" showValueHelp="true" valueHelpOnly="true" 
+													enabled="{
+															parts: [
+																{path: 'i18n>idNomPoseedor'},
+																{path: '/oAppConfig/bEditMode'}
+															],
+															formatter: '.hasEnableRights'
+														}"
+													valueHelpRequest="handleValueHelpPoseedores"/>
+												<Label text=""/>
+												<Input id="idCodPoseedor" visible="false" editable="false"/>
+												<Label text="Tipo Cobro"/>
+												<ComboBox required="true" change="onTipoCobro" id="idTipoCobro" 
+													enabled="{
+															parts: [
+																{path: 'i18n>idTipoCobro'},
+																{path: '/oAppConfig/bEditMode'}
+															],
+															formatter: '.hasEnableRights'
+														}">
+													<items>
+														<core:Item key="01" text="PORCENTAJE"/>
+														<core:Item key="02" text="MONEDA"/>
+													</items>
+													<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+												</ComboBox>
+												<Label text="Porcentaje (%)"/>
+												<Input id="idPorcentaje" required="true" visible="false" value="{path:'/valorPorcentajeConDecimal', type:'sap.ui.model.type.Currency'}" 
+													enabled="{
+															parts: [
+																{path: 'i18n>idPorcentaje'},
+																{path: '/oAppConfig/bEditMode'}
+															],
+															formatter: '.hasEnableRights'
+														}"
+													liveChange="onlyNumber">
+												   	<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+													</Input>
+												<Label text="Valor Poliza"/>
+												<Input id="idValorPoliza"  required="true" 
+													enabled="{
+															parts: [
+																{path: 'i18n>idValorPoliza'},
+																{path: '/oAppConfig/bEditMode'}
+															],
+															formatter: '.hasEnableRights'
+														}"
+													visible="false" value="{path:'/valorPoliza', type:'sap.ui.model.type.Currency'}"
+													liveChange="onlyNumber">
+													<customData>
+														<core:CustomData key="required" value="true" writeToDom="true"/>
+													</customData>
+													</Input>
+											</f:content>
+										</f:SimpleForm>
+									</content>
+								</IconTabFilter>
+								<IconTabSeparator id="idSeparatorSystem" visible="false"/>
+								<IconTabFilter class="Neutral" id="filterSystem" icon="sap-icon://key-user-settings" design="Horizontal" iconColor="Neutral" visible="false"
+									text="Sistema">
+									<content>
+										<f:SimpleForm title="Sistema" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+											labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" validateFieldGroup="onValidateFieldGroup">
+											<f:content>
+												<Label text="Ultima Modificación"/>
+												<Input enabled="false" id="idUltimaModificacion" class="sapUiSmallMarginBottom"/>
+												<Label text="Modificado por"/>
+												<Input enabled="false" id="idModificadoPor" class="sapUiSmallMarginBottom"/>
+												<Label text="Creado por"/>
+												<Input enabled="false" id="idCreadoPor" class="sapUiSmallMarginBottom"/>
+												<Label text="Fecha Creación"/>
+												<Input enabled="false" id="idFechaCreacion" class="sapUiSmallMarginBottom"/>
+											</f:content>
+										</f:SimpleForm>
+									</content>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</content>
+					<Toolbar>
+						<Bar design="Footer">
+							<contentMiddle>
+								<Button id="btnAdd" text="Guardar" press="onSave" icon="sap-icon://save" type="Accept"/>
+								<Button id="btnUpdate" text="Actualizar" press="onSave" icon="sap-icon://save" type="Emphasized" visible="false"/>
+							</contentMiddle>
+						</Bar>
+					</Toolbar>
+				</Panel>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

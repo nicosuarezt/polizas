@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="tableSelect" noDataText="No se ha encontrado ningun dato" title="Productos" search="onFilter" confirm="handleCloseProductos"
+		cancel="handleCloseProductos" items="{/mProductos}">
+	
+		<ColumnListItem>
+			<cells>
+				<Text text="{DESC2}"/>
+			</cells>
+			<!--	<cells>-->
+			<!--	<Text text="{DESC3}"/>-->
+			<!--</cells>-->
+		</ColumnListItem>
+		<columns>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<header>
+					<Text text="Productos"/>
+				</header>
+			</Column>
+			<!--	<Column minScreenWidth="Tablet" demandPopin="true">-->
+			<!--	<header>-->
+			<!--		<Text text="Naturaleza"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
